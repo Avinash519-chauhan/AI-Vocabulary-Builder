@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Vocabulary Builder</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+
+<body class="min-h-screen bg-linear-to-br from-indigo-600 via-purple-400 to-pink-500 p-5">
+
+    <div class="max-w-8xl mx-auto">
+        <!-- HEADER SECTION -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-semibold text-white drop-shadow-lg">
+                📚Vocabulary Builder</h1>
+            <p class="text-white/90 mt-2 text-lg">
+                Learn new words with AI</p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-6">
+            <!-- Left Portion box -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Search Box -->
+                <div class="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-4">
+                    <h2 class="text-2xl font-semibold text-white mb-4 text-center">
+                    🔍 Search Vocabulary</h2>
+                    <input type="text" placeholder="Enter Any Word..." id="wordInput"
+                    class="w-full px-4 py-3 rounded-xl bg-white/80 outline-none text-gray-800" />
+                    <button id="searchBtn" class="w-full mt-4 bg-linear-to-r from-indigo-500 to-pink-500 text-white 
+                    py-3 rounded-xl font-semibold hover:scale-102 transition-all duration-400">
+                    Search</button>
+
+                    <div id="loading" class="hidden mt-4 text-center text-white font-semibold animate-pulse">
+                        🤖 AI is generating results...
+                    </div>
+                </div>
+
+                <!-- Saves Box -->
+                <div id="savedWords" class="bg-white/15 backdrop-blur-lg border border-white/20 rounded-3xl p-6 shadow-2xl">
+                    <h2 class="text-2xl font-semibold text-white mb-4 text-center">🟢 Saved Words</h2>
+                    <ul id="wordList" class="space-y-2 text-white"></ul>
+                </div>
+            </div>
+
+            <!-- Right Portion -->
+             <div class="lg:col-span-3 space-y-6">
+                <!-- Result Box -->
+                 <div id="resultBox" class="hidden bg-white/15 backdrop-blur-lg border border-white/20 rounded-2xl p-6 shadow-2xl">
+                    <div class="flex justify-between items-center mb-5">
+                        <h2 id="wordTitle" class="text-2xl font-semibold text-white">Word</h2>
+                        <button id="saveBtn" class="bg-green-500 hover:bg-green-400 px-5 py-2 rounded-xl text-white font-semibold">
+                        ❄️ Save Word</button>
+                    </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
