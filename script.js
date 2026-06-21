@@ -86,6 +86,12 @@ const getWordInfo = async (word) => {
   }
 };
 
+wordInput.addEventListener("keydown",(e)=>{
+  if(e.key === "Enter"){
+    searchBtn.click();
+  }
+});
+
 searchBtn.addEventListener("click", async ()=> {
   const word = wordInput.value.trim();
   if(!word) return alert("Please Enter a Word");
@@ -116,4 +122,33 @@ checkQuizBtn.addEventListener("click", ()=>{
   }
 });
 
-searchBtn.addEventListener("click", getWordInfo);
+let saved = JSON.parse(localStorage.getItem("wordBank")) || []
+
+//save word
+saveBtn.addEventListener("click", ()=>{
+  const word = wordTitle.textContent
+  if(!saved.includes(word)){
+    saved.push(word)
+    localStorage.setItem("wordBank", JSON.stringify(saved));
+    displaySaveWords()
+  } else{
+    alert("Word Already Saved")
+  }
+});
+
+// Display Saved Words
+const displaySaveWords = ()=>{
+  wordList.innerHTML = ""
+  saved.forEach((word)=>{
+    const li = document.createElement("li")
+    li.innerHTML = `${word}
+    <button onClick="deleteWord('${word}')" class=" text-red-500" >❌</button>`;
+    wordList.appendChild(li);
+  });
+}
+
+const deleteWord = (word)=>{
+  saved = saved.filter((w)=> w !== word)
+  localStorage.setItem("wordBank", JSON.stringify(saved));
+  displaySaveWords()
+};
